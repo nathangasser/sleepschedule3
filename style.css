@@ -1,0 +1,51 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin-top: 3em;
+}
+
+.schedule, table {
+  padding: 1em;
+  margin: auto;
+}
+
+
+
+#form-submit {
+  padding: 1em;
+}
+
+table {
+  background-color: lightcyan;
+}
+
+td.cover {
+  text-align: center;
+}
+
+td.rowhead {
+  text-transform: uppercase;
+  font-size: .9em;
+}
+
+td.valstart {
+  text-align: right;
+} 
+
+td.valend {
+  text-align: left;
+}
+
+td.dur {
+  font-size: .7em;
+  text-align: right;
+}
+
+td.between {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-size: .6em;
+  font-weight: bold;
+  padding: 0em;
+}

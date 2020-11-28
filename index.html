@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleep Schedule Maker</title>
+  <link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- form -->
+  <div>
+    <form>
+      <div id="form-element">
+        <label>Wake up time: </label>
+        <select id="waketime" name="waketime">
+          <option value="5:00 am">5:00 am</option>
+          <option value="5:15 am">5:15 am</option>
+          <option value="5:30 am">5:30 am</option>
+          <option value="5:45 am">5:45 am</option>
+          <option value="6:00 am">6:00 am</option>
+          <option value="6:15 am">6:15 am</option>
+          <option value="6:30 am" selected>6:30 am</option>
+          <option value="6:45 am">6:45 am</option>
+          <option value="7:00 am">7:00 am</option>
+        </select> 
+      </div>
+      <div id="form-submit">
+        <button name="makesched" id="makesched" type="button">CREATE SCHEDULE</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- schedules -->
+  <div id="output" class="container">
+
+    <!-- 
+    <div class="schedule">
+      <table>
+        <tr>
+          <td class="rowhead">Wake</td>
+          <td colspan="2" class="cover">6:15 am</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="between">2 hours</td>
+        </tr>
+        <tr>
+          <td class="rowhead">Nap</td>
+          <td class="valstart">8:00 am</td>
+          <td class="valend">9:00 am</td>
+          <td class="dur">1 hour</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="between">2 hours</td>
+        </tr>
+        <tr>
+          <td class="rowhead">Nap</td>
+          <td class="valstart">12:00 am</td>
+          <td class="valend">2:00 am</td>
+          <td class="dur">2 hours</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="between">2 hours</td>
+        </tr>
+        <tr>
+          <td class="rowhead">Nap</td>
+          <td class="valstart">4:00 am</td>
+          <td class="valend">5:00 am</td>
+          <td class="dur">1 hour</td>
+        </tr>
+        <tr>
+          <td class="rowhead">Bed</td>
+          <td colspan="2" class="cover">8:00 am</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </div> 
+    -->
+
+  </div>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
