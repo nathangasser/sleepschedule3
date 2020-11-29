@@ -171,4 +171,12 @@ function generateSchedule() {
 
 
 // when user clicks form button
-makeBtn.addEventListener("click", () => generateSchedule(), false);
+// makeBtn.addEventListener("click", () => generateSchedule(), false);
+let notFirstClick = 0;
+timeList.addEventListener("click", () => {
+  if (notFirstClick) {
+    generateSchedule() 
+  } else {
+    notFirstClick = 1;
+  }
+}, false);
