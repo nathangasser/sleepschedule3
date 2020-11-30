@@ -1,6 +1,4 @@
 // grab elements out of DOM
-//const timeList = document.querySelector("#waketime");
-//const makeBtn = document.querySelector("#makesched");
 const outputBox = document.querySelector("#output");
 
 // a class to store all times into
@@ -50,7 +48,6 @@ function getTwelveHour(decimal) {
 
 // converts and returns a decimal from the HTML selected option
 function parseSelection(element, decimal) {
-  //let arrayTime = element.selectedOptions[0].label.split(" ").shift().split(":");
   let amPM = element.selectedOptions[0].label.split(" ");
   let arrayTime = amPM.shift().split(":");
   if (decimal && amPM[0] === "pm" && arrayTime[0] !== "12") {
@@ -172,7 +169,7 @@ function createHTML(wakeTime, naps, bedTime) {
         </div>
       </div>
       <!-- awake time between sleep -->
-      <p id="between-${i}" class="between">${nap.awakeAfter} hr(s) between</p>`;
+      <p id="between-${i}" class="between help">${nap.awakeAfter} hr(s) between</p>`;
     i++;
   }
 
@@ -192,6 +189,39 @@ function createHTML(wakeTime, naps, bedTime) {
   return outputHTML;
 }
 
+function checkBetweenErrors(element, decimal) {
+  if (decimal > 2.5 || decimal < 1.5) {
+    // danger label
+    element.classList.add("show-danger");
+    element.classList.remove("show-warning");
+  } else if (decimal === 2.5) {
+    // warning label
+    element.classList.add("show-warning");
+    element.classList.remove("show-danger");
+  } else {
+    element.classList.remove("show-warning");
+    element.classList.remove("show-danger");
+  }
+}
+
+function checkDurationErrors(element, decimal) {
+  if (decimal > 2 || decimal < .5) {
+    // danger label
+    element.classList.add("has-background-danger");
+    element.classList.add("has-text-black");
+    element.classList.remove("has-background-warning");
+  } else if (decimal === 2) {
+    // warning label
+    element.classList.add("has-background-warning");
+    element.classList.remove("has-background-danger");
+    element.classList.remove("has-text-black");
+  } else {
+    element.classList.remove("has-background-warning");
+    element.classList.remove("has-background-danger");
+    element.classList.remove("has-text-black");
+  }
+}
+
 function updateAdjacent(element, newVal) {
   let curVal = 0;
 
@@ -202,6 +232,7 @@ function updateAdjacent(element, newVal) {
     curVal = wakeTime.decimal;
     wakeTime.awakeAfter -= newVal - curVal;
     wakeTime.HTMLbetween.innerHTML = `${wakeTime.awakeAfter} hr(s) between`;
+    checkBetweenErrors(wakeTime.HTMLbetween, wakeTime.awakeAfter);
     wakeTime.adjustMinutes(newVal - curVal);
   } else {
     // updates exist in one of the naps
@@ -214,33 +245,38 @@ function updateAdjacent(element, newVal) {
           curVal = naps[i].decimal;
           wakeTime.awakeAfter += newVal - curVal;
           wakeTime.HTMLbetween.innerHTML = `${wakeTime.awakeAfter} hr(s) between`;
+          checkBetweenErrors(wakeTime.HTMLbetween, wakeTime.awakeAfter);
         } else {
           // if it's any nap sleep except the first one, we must update
           // the previous nap's .HTMLbetween
           curVal = naps[i].decimal;
           naps[i-1].awakeAfter += newVal - curVal;
           naps[i-1].HTMLbetween.innerHTML = `${naps[i-1].awakeAfter} hr(s) between`;
+          checkBetweenErrors(naps[i-1].HTMLbetween, naps[i-1].awakeAfter);
         }
         // update naps[i].HTMLduration whether or not it was the first nap
         naps[i].duration -= newVal - curVal;
         naps[i].HTMLduration.innerHTML = `${naps[i].duration} hr(s)`;
         naps[i].adjustMinutes(newVal - curVal);
+        checkDurationErrors(naps[i].HTMLduration, naps[i].duration);
 
       } else if (element === naps[i].HTMLwake) {
         // the wake element of naps was changed
-        // update naps[i].HTMLduration
-        // update naps[i].HTMLbetween
         curVal = naps[i].decimal + naps[i].duration;
         naps[i].duration += newVal - curVal;
         naps[i].HTMLduration.innerHTML = `${naps[i].duration} hr(s)`;
+        checkDurationErrors(naps[i].HTMLduration, naps[i].duration);
         naps[i].awakeAfter -= newVal - curVal;
-        naps[i].HTMLbetween.innerHTML = `${naps[i].awakeAfter} hr(s) between`; 
+        naps[i].HTMLbetween.innerHTML = `${naps[i].awakeAfter} hr(s) between`;
+        checkBetweenErrors(naps[i].HTMLbetween, naps[i].awakeAfter); 
       }
     }
   }
 }
 
+// what do after HTML element changes
 function handleClick(element) {
+  // 2nd parameter of parseSelection switches to return decimal value instead of 12hr format
   let newVal = parseSelection(element, true);
   element.innerHTML = generateDropOptions(newVal);
   updateAdjacent(element, newVal);
@@ -271,7 +307,7 @@ let output = createHTML(wakeTime, naps, bedTime);
 outputBox.innerHTML = output;
 
 
-
+// create variables for DOM elements 
 wakeTime.HTMLwake = document.querySelector("#wake-time");
 wakeTime.HTMLbetween = document.querySelector("#between-wake");
 
@@ -282,6 +318,8 @@ for (let foo = 0; foo < naps.length; foo++) {
   naps[foo].HTMLbetween = document.querySelector(`#between-${foo}`);
 }
 
+
+// event delegation 
 document.addEventListener("change", function(event) {
   if (event.target.matches(".clickable")) {
     handleClick(event.target);
