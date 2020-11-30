@@ -4,84 +4,171 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sleep Schedule Maker</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css" />
   <link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- form -->
-  <div>
-    <form>
-      <div id="form-element">
-        <label>Wake up time: </label>
-        <select id="waketime" name="waketime">
-          <option value="5:00 am">5:00 am</option>
-          <option value="5:15 am">5:15 am</option>
-          <option value="5:30 am">5:30 am</option>
-          <option value="5:45 am">5:45 am</option>
-          <option value="6:00 am">6:00 am</option>
-          <option value="6:15 am">6:15 am</option>
-          <option value="6:30 am" selected>6:30 am</option>
-          <option value="6:45 am">6:45 am</option>
-          <option value="7:00 am">7:00 am</option>
-        </select> 
+  <!-- banner title -->
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <h1 class="title">Sleep Scheduler</h1>
+    </div>
+  </section>
+
+  <!-- provides margin between banner and schedule-->
+  <section>&nbsp;</section>
+
+  <!-- schedule -->
+  <div class="container">
+
+    <!-- target element for javascript -->
+    <div id="output" class="box">
+    
+    <!-- wake time section -->
+      <div class="field has-addons has-addons-centered">
+        <div class="control">
+          <p class="button is-primary is-rounded rowhead">Wake</p>
+        </div>
+        <div class="control">
+          <div class="select is-rounded is-primary">
+            <select id="waketime" name="waketime">
+              <option value="5:00 am">5:00 am</option>
+              <option value="5:15 am">5:15 am</option>
+              <option value="5:30 am">5:30 am</option>
+              <option value="5:45 am">5:45 am</option>
+              <option value="6:00 am">6:00 am</option>
+              <option value="6:15 am">6:15 am</option>
+              <option value="6:30 am" selected>6:30 am</option>
+              <option value="6:45 am">6:45 am</option>
+              <option value="7:00 am">7:00 am</option>
+            </select> 
+          </div>
+        </div>
+        <div class="control is-expanded">
+          <p class="button is-primary is-rounded is-fullwidth">&nbsp;</p>
+        </div>
       </div>
-      <!--
-      <div id="form-submit">
-        <button name="makesched" id="makesched" type="button">CREATE SCHEDULE</button>
+      <!-- awake time between sleep -->    
+      <p class="between">2.25 hr(s) between</p>
+    
+      <!-- nap section -->
+      <div class="field has-addons has-addons-centered">
+        <div class="control">
+          <p class="button is-primary is-rounded is-outlined rowhead">Nap</p>
+        </div>
+        <div class="control">
+          <div class="select is-primary">
+            <select>
+              <option>7:45 am</option>
+              <option selected>8:00 am</option>
+              <option>8:15 am</option>
+            </select>
+          </div>
+        </div>
+        <div class="control">
+          <p class="button is-primary is-outlined is-rounded reduce">&nbsp;</p>
+        </div>
+        <div class="control">
+          <div class="select is-primary">
+            <select>
+              <option>8:45 am</option>
+              <option selected>9:00 am</option>
+              <option>9:15 am</option>
+            </select>
+          </div>
+        </div>
+        <div class="control is-expanded">
+          <p class="button is-primary is-outlined is-rounded is-fullwidth">1 hr(s)</p>
+        </div>
       </div>
-      -->
-    </form>
+      <!-- awake time between sleep -->
+      <p class="between">2.25 hr(s) between</p>
+      
+      <!-- nap section -->
+      <div class="field has-addons has-addons-centered">
+        <div class="control">
+          <p class="button is-primary is-rounded is-outlined rowhead">Nap</p>
+        </div>
+        <div class="control">
+          <div class="select is-primary">
+            <select>
+              <option>7:45 am</option>
+              <option selected>8:00 am</option>
+              <option>8:15 am</option>
+            </select>
+          </div>
+        </div>
+        <div class="control">
+          <p class="button is-primary is-outlined is-rounded reduce">&nbsp;</p>
+        </div>
+        <div class="control">
+          <div class="select is-primary">
+            <select>
+              <option>8:45 am</option>
+              <option selected>9:00 am</option>
+              <option>9:15 am</option>
+            </select>
+          </div>
+        </div>
+        <div class="control is-expanded">
+          <p class="button is-primary is-outlined is-rounded is-fullwidth">1 hr(s)</p>
+        </div>
+      </div>
+      <!-- awake time between sleep -->
+      <p class="between">2.25 hr(s) between</p>
+
+      <!-- nap section -->
+      <div class="field has-addons has-addons-centered">
+        <div class="control">
+          <p class="button is-primary is-rounded is-outlined rowhead">Nap</p>
+        </div>
+        <div class="control">
+          <div class="select is-primary">
+            <select>
+              <option>7:45 am</option>
+              <option selected>8:00 am</option>
+              <option>8:15 am</option>
+            </select>
+          </div>
+        </div>
+        <div class="control">
+          <p class="button is-primary is-outlined is-rounded reduce">&nbsp;</p>
+        </div>
+        <div class="control">
+          <div class="select is-primary">
+            <select>
+              <option>8:45 am</option>
+              <option selected>9:00 am</option>
+              <option>9:15 am</option>
+            </select>
+          </div>
+        </div>
+        <div class="control is-expanded">
+          <p class="button is-primary is-outlined is-rounded is-fullwidth">1 hr(s)</p>
+        </div>
+      </div>
+      <!-- awake time between sleep -->
+      <p class="between">2.25 hr(s) between</p>
+
+      <!-- bed time section -->
+      <div class="field has-addons has-addons-centered">
+        <div class="control">
+          <p class="button is-rounded is-static rowhead">Bed</p>
+        </div>
+        <div class="control">
+          <p class="button reduce">7:00 pm</p>
+        </div>
+        <div class="control is-expanded">
+          <p class="button is-static is-rounded is-fullwidth">&nbsp;</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- end output -->
+
   </div>
-
-  <!-- schedules -->
-  <div id="output" class="container">
-
-    <!-- 
-    <div class="schedule">
-      <table>
-        <tr>
-          <td class="rowhead">Wake</td>
-          <td colspan="2" class="cover">6:15 am</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td colspan="4" class="between">2 hours</td>
-        </tr>
-        <tr>
-          <td class="rowhead">Nap</td>
-          <td class="valstart">8:00 am</td>
-          <td class="valend">9:00 am</td>
-          <td class="dur">1 hour</td>
-        </tr>
-        <tr>
-          <td colspan="4" class="between">2 hours</td>
-        </tr>
-        <tr>
-          <td class="rowhead">Nap</td>
-          <td class="valstart">12:00 am</td>
-          <td class="valend">2:00 am</td>
-          <td class="dur">2 hours</td>
-        </tr>
-        <tr>
-          <td colspan="4" class="between">2 hours</td>
-        </tr>
-        <tr>
-          <td class="rowhead">Nap</td>
-          <td class="valstart">4:00 am</td>
-          <td class="valend">5:00 am</td>
-          <td class="dur">1 hour</td>
-        </tr>
-        <tr>
-          <td class="rowhead">Bed</td>
-          <td colspan="2" class="cover">8:00 am</td>
-          <td>&nbsp;</td>
-        </tr>
-      </table>
-    </div> 
-    -->
-
-  </div>
-
+  <!-- end container -->
   <script src="index.js"></script>
 
 </body>

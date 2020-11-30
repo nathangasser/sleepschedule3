@@ -1,51 +1,30 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  margin-top: 3em;
+body * {
+  font-size: .8em;
 }
 
-.schedule, table {
-  padding: 1em;
+#output {
+  width: 90%;
+  max-width: 500px;
   margin: auto;
-}
-
-
-
-#form-submit {
-  padding: 1em;
-}
-
-table {
-  background-color: lightcyan;
-}
-
-td.cover {
-  text-align: center;
-}
-
-td.rowhead {
-  text-transform: uppercase;
-  font-size: .9em;
-}
-
-td.valstart {
-  text-align: right;
 } 
 
-td.valend {
-  text-align: left;
+.rowhead {
+  max-width: 5em;
+  font-size: .8em;
 }
 
-td.dur {
-  font-size: .7em;
+.between {
+  color: gray;
+  font-size: .9em;
+  margin: auto;
   text-align: right;
+  margin-top: -1em;
 }
 
-td.between {
-  background-color: white;
-  color: rgba(0, 0, 0, 0.3);
-  text-align: center;
-  font-size: .6em;
-  font-weight: bold;
-  padding: 0em;
+.is-fullwidth {
+  font-size: .8em;
+}
+
+.reduce {
+  font-size: .8em;
 }
